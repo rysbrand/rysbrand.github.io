@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Becca [LastName] | Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Becca [LastName]</h1>
+    <p class="tagline">Developer · Veteran · Creator</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="resume/BeccaLastnameResume.pdf" target="_blank">Resume</a></li>
+      <li><a href="projects/index.html">Projects</a></li>
+      <li><a href="http://catalog.southeasttech.edu/preview_program.php?catoid=17&poid=2004&hl=%22programming%22" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="intro reveal">
+      <h2>About Me</h2>
+      <p>
+        I'm a second-year Computer Science student at Southeast Technical Institute,
+        with a background as a U.S. military veteran and former pastry chef. I build
+        full-stack applications with a focus on meaningful, real-world impact — from
+        gamified productivity tools to employee scheduling systems.
+      </p>
+      <p>
+        I'm currently completing my A.A.S. at STI and plan to transfer to the
+        University of New Hampshire to finish my Bachelor's degree.
+      </p>
+    </section>
+
+    <section class="highlights reveal">
+      <h2>Highlights</h2>
+      <div class="card-grid">
+        <div class="card reveal">
+          <div class="card-badge">React · TypeScript</div>
+          <h3>Moonmoss</h3>
+          <p>A cross-platform habit-building app with gamified self-regulation mechanics built around a state-driven garden metaphor.</p>
+          <a href="projects/index.html#moonmoss">View Project →</a>
+        </div>
+        <div class="card reveal">
+          <div class="card-badge">Next.js · Supabase</div>
+          <h3>Turbo-Garbanzo</h3>
+          <p>An employee scheduling and time-tracking application with role-based access for employees, managers, and admins.</p>
+          <a href="projects/index.html#turbo-garbanzo">View Project →</a>
+        </div>
+        <div class="card reveal">
+          <div class="card-badge">C# · .NET</div>
+          <h3>CIS296 Projects</h3>
+          <p>Object-oriented desktop applications developed in C# as part of advanced coursework.</p>
+          <a href="projects/index.html#cis296">View Project →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Becca [LastName] · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
