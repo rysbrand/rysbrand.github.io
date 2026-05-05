@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIS266 Unit 3 — WCF Campus Room Booking | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../../index.html">Home</a></li>
+      <li><a href="../../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>CIS-266 Unit 3 — Campus Room Booking Service</h2>
+        <a href="https://github.com/rysbrand/CampusRoomapp" target="_blank" class="github-link">View on GitHub →</a>
+      </div>
+      <div class="card-badge">C# · WCF · SOAP · .NET Framework</div>
+      <p class="project-intro">
+        A solo WCF SOAP web service built for CIS-266 Unit 3. The project consists of a C# WCF
+        service that manages campus room availability, and a separate console client that consumes
+        the service to add, retrieve, and update room booking status.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>WCF Service Contract</strong> — The service interface defines five operations: AddRoom, GetRoom, GetAllRooms, CheckRoomAvailability, and SetRoomAvailability.</li>
+        <li><strong>SOAP Communication</strong> — The client communicates with the service using SOAP over HTTP, with the service contract enforced via C# attributes.</li>
+        <li><strong>Data Contract</strong> — A <code>Room</code> data contract exposes RoomNumber, Building, and IsAvailable as serializable members.</li>
+        <li><strong>Fault Handling</strong> — The service throws typed <code>FaultException</code> errors for invalid input, duplicate rooms, and missing records.</li>
+        <li><strong>Duplicate Prevention</strong> — Attempting to add a room with an existing room number throws a fault rather than silently overwriting.</li>
+        <li><strong>Console Client</strong> — A separate .NET console application acts as the service consumer, demonstrating all five service operations.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Sample Code</h2>
+      <p>The WCF service contract defining all available operations:</p>
+      <pre><code>[ServiceContract]
+public interface IService1
+{
+    [OperationContract]
+    void AddRoom(Room room);
+
+    [OperationContract]
+    Room GetRoom(int roomNumber);
+
+    [OperationContract]
+    List&lt;Room&gt; GetAllRooms();
+
+    [OperationContract]
+    bool CheckRoomAvailability(int roomNumber);
+
+    [OperationContract]
+    void SetRoomAvailability(int roomNumber, bool isAvailable);
+}</code></pre>
+
+      <p>The Room data contract:</p>
+      <pre><code>[DataContract]
+public class Room
+{
+    [DataMember]
+    public int RoomNumber { get; set; }
+
+    [DataMember]
+    public string Building { get; set; }
+
+    [DataMember]
+    public bool IsAvailable { get; set; }
+}</code></pre>
+
+      <p>Duplicate room prevention with fault handling:</p>
+      <pre><code>public void AddRoom(Room room)
+{
+    if (room == null)
+        throw new FaultException("Room cannot be null.");
+
+    if (room.RoomNumber &lt;= 0 || string.IsNullOrWhiteSpace(room.Building))
+        throw new FaultException("Invalid room information.");
+
+    if (rooms.Any(r =&gt; r.RoomNumber == room.RoomNumber))
+        throw new FaultException("Room with this number already exists.");
+
+    rooms.Add(room);
+}</code></pre>
+    </section>
+
+    <section class="reveal screenshots">
+      <h2>Screenshots</h2>
+      <img src="screenshots/console-main-menu.png" alt="Campus Room Booking System console menu" />
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>C#</strong> — Primary language for both service and client</li>
+        <li><strong>WCF (Windows Communication Foundation)</strong> — SOAP-based service framework</li>
+        <li><strong>.NET Framework</strong> — Runtime environment</li>
+        <li><strong>SOAP</strong> — XML-based messaging protocol</li>
+        <li><strong>Visual Studio</strong> — Development environment</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
