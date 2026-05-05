@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIS266 Unit 2 — RESTful Web Service | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../../index.html">Home</a></li>
+      <li><a href="../../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>CIS-266 Unit 2 — RESTful Web Service</h2>
+      </div>
+      <div class="card-badge">PHP · MySQL · RESTful · AJAX · JSON</div>
+      <p class="project-intro">
+        A solo RESTful AJAX/JSON/PHP/MySQL web service built for CIS-266 Unit 2. The project
+        consists of a PHP service provider exposing flower inventory data from a MySQL database,
+        and an HTML/JavaScript client consuming the API via AJAX requests.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>RESTful API Provider</strong> — PHP endpoints return flower records as JSON, supporting retrieval of all records, a single record by ID, and table metadata.</li>
+        <li><strong>AJAX Client</strong> — HTML/JavaScript client pages consume the API asynchronously without page reloads.</li>
+        <li><strong>MySQL Database</strong> — A custom <code>ysbr_flowers</code> table stores flower name, color, and quantity data.</li>
+        <li><strong>OOP & Procedural Versions</strong> — The provider includes both an object-oriented and a procedural implementation of the database access layer.</li>
+        <li><strong>API Testers</strong> — Dedicated tester pages allow direct testing of each endpoint independently.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Sample Code</h2>
+      <p>The API endpoint returning all flower records from the database:</p>
+      <pre><code>&lt;?php
+require_once 'class_lib/studentDB_Access.php';
+
+$db = new MurachDB_Access();
+$result = $db->displayRecords("ysbr_flowers");
+
+if ($result && mysqli_num_rows($result) > 0) {
+    print("all flower records: &lt;br /&gt;");
+    while ($row = mysqli_fetch_assoc($result)) {
+        print($row["flowerName"] . " " 
+            . $row["flowerColor"] . " " 
+            . $row["flowerAmount"] . "&lt;br /&gt;");
+    }
+} else {
+    print("No records found");
+}
+?&gt;</code></pre>
+    </section>
+
+    <section class="reveal">
+      <h2>Database Schema</h2>
+      <p>The <code>ysbr_flowers</code> table stores flower inventory data:</p>
+      <pre><code>CREATE TABLE ysbr_flowers (
+  id           INT AUTO_INCREMENT PRIMARY KEY,
+  flowerName   VARCHAR(250) NOT NULL,
+  flowerColor  VARCHAR(250) NOT NULL,
+  flowerAmount INT NOT NULL
+);</code></pre>
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>PHP</strong> — RESTful service provider</li>
+        <li><strong>MySQL</strong> — Database backend</li>
+        <li><strong>AJAX / JavaScript</strong> — Asynchronous client-side requests</li>
+        <li><strong>HTML/CSS</strong> — Client interface</li>
+        <li><strong>JSON</strong> — Data interchange format</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
