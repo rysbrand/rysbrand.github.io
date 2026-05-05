@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SP_adminentry | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>SP_adminentry</h2>
+        <a href="https://github.com/rysbrand/SP_adminentry" target="_blank" class="github-link">View on GitHub →</a>
+      </div>
+      <div class="card-badge">Node.js · TypeScript · PostgreSQL · Docker</div>
+
+      <p class="project-intro">
+        A secure admin entry portal built as part of CIS-225 Secure Programming. The project focuses on
+        implementing real-world security practices in a Node.js/Express backend, including encrypted
+        communications, secure authentication, and role-based access control.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <p>The application implements several industry-standard security patterns:</p>
+      <ul class="feature-list">
+        <li><strong>HTTPS with TLS 1.2+</strong> — All traffic is encrypted using self-signed certificates generated with OpenSSL. SSLv3, TLS 1.0, and TLS 1.1 are explicitly disabled.</li>
+        <li><strong>Argon2 Password Hashing</strong> — User passwords are never stored in plaintext. Argon2 is used for hashing and verification, chosen over bcrypt for its stronger resistance to GPU attacks.</li>
+        <li><strong>Session-Based Authentication</strong> — Express-session manages user sessions with httpOnly cookies and sameSite protections.</li>
+        <li><strong>Role-Based Access Control</strong> — Two roles exist: standard users and admins. Protected routes use middleware to verify login status and admin privileges before granting access.</li>
+        <li><strong>PostgreSQL Backend</strong> — User accounts and bank account data are stored in a PostgreSQL database, containerized with Docker Compose.</li>
+        <li><strong>Security Headers</strong> — Responses include headers such as Strict-Transport-Security, X-Frame-Options, X-Content-Type-Options, and X-XSS-Protection.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>Node.js + Express</strong> — Backend server and routing</li>
+        <li><strong>TypeScript</strong> — Typed throughout for reliability and clarity</li>
+        <li><strong>PostgreSQL</strong> — Relational database for users and accounts</li>
+        <li><strong>Docker + Docker Compose</strong> — Containerized database setup</li>
+        <li><strong>Argon2</strong> — Password hashing</li>
+        <li><strong>express-session</strong> — Session management</li>
+        <li><strong>OpenSSL / TLS</strong> — HTTPS encryption</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Sample Code</h2>
+      <p>The following snippet shows the <code>requireAdmin</code> middleware, which protects admin-only routes:</p>
+      <pre><code>function requireAdmin(req, res, next) {
+  if (!req.session.userId || !req.session.username) {
+    return res.redirect("/login");
+  }
+  if (!req.session.isAdmin) {
+    return res.status(403).send("Access denied.");
+  }
+  next();
+}</code></pre>
+
+      <p>And the Argon2 password verification on login:</p>
+      <pre><code>const ok = await argon2.verify(user.password_hash, password);
+if (!ok) {
+  return res.status(401).send("Invalid login");
+}
+req.session.userId = user.id;
+req.session.username = user.username;
+req.session.isAdmin = user.is_admin;</code></pre>
+    </section>
+
+    <section class="reveal screenshots">
+      <h2>Screenshots</h2>
+
+      <h3>Admin View</h3>
+      <img src="screenshots/admin-home.png" alt="Home page logged in as admin" />
+      <img src="screenshots/dashboard-admin.png" alt="Admin dashboard" />
+      <img src="screenshots/admin-panel.png" alt="Admin panel showing all users and account balances" />
+      <img src="screenshots/account-admin.png" alt="Admin account info page" />
+
+      <h3>Customer View</h3>
+      <img src="screenshots/dashboard-customer.png" alt="Customer dashboard" />
+      <img src="screenshots/account-customer.png" alt="Customer account info page" />
+
+      <h3>Error Handling</h3>
+      <img src="screenshots/error-login.png" alt="Login error for missing credentials" />
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
