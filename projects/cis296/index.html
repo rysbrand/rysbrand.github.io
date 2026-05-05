@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIS296 — Azure File Manager | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>CIS-296 — Azure File Manager</h2>
+        <a href="https://github.com/rysbrand/Unit2ProjectMS" target="_blank" class="github-link">View on GitHub →</a>
+      </div>
+      <div class="card-badge">C# · ASP.NET Core · Azure · Razor Pages</div>
+      <p class="project-intro">
+        A cloud-connected file management web application built for CIS-296 Advanced MS Web Development.
+        The app uses ASP.NET Core Razor Pages with ASP.NET Identity for role-based authentication,
+        and integrates with Azure Blob Storage for file uploads and retrieval.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>Azure Blob Storage Integration</strong> — Files are uploaded to and retrieved from Azure Blob Storage via a dedicated service layer.</li>
+        <li><strong>Role-Based Authorization</strong> — Admin users can upload files; all authenticated users can view the file list. Roles are seeded automatically on startup.</li>
+        <li><strong>ASP.NET Identity</strong> — Full user authentication system with login, registration, and role management built on top of Entity Framework Core.</li>
+        <li><strong>Razor Pages Architecture</strong> — Clean separation of UI and page model logic using ASP.NET Core's Razor Pages pattern.</li>
+        <li><strong>SQL Server Backend</strong> — User and identity data stored in Azure-hosted SQL Server via Entity Framework Core migrations.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Sample Code</h2>
+      <p>The <code>BlobService</code> handles all Azure Blob Storage operations:</p>
+      <pre><code>public async Task UploadFileAsync(IFormFile file)
+{
+    var blobClient = _containerClient.GetBlobClient(file.FileName);
+
+    using var stream = file.OpenReadStream();
+    await blobClient.UploadAsync(stream, overwrite: true);
+}
+
+public async Task&lt;List&lt;string&gt;&gt; GetFileNamesAsync()
+{
+    var files = new List&lt;string&gt;();
+
+    await foreach (var blobItem in _containerClient.GetBlobsAsync())
+    {
+        files.Add(blobItem.Name);
+    }
+
+    return files;
+}</code></pre>
+
+      <p>The upload page is restricted to Admin role only:</p>
+      <pre><code>[Authorize(Roles = "Admin")]
+public class UploadModel : PageModel
+{
+    private readonly BlobService _blobService;
+
+    [BindProperty]
+    public IFormFile? UploadFile { get; set; }
+
+    public async Task&lt;IActionResult&gt; OnPostAsync()
+    {
+        if (UploadFile == null || UploadFile.Length == 0)
+        {
+            ModelState.AddModelError(string.Empty, "Please choose a file.");
+            return Page();
+        }
+
+        await _blobService.UploadFileAsync(UploadFile);
+        return RedirectToPage("/Files");
+    }
+}</code></pre>
+
+      <p>Roles and an admin user are seeded automatically on startup:</p>
+      <pre><code>string[] roles = { "Admin", "User" };
+
+foreach (var role in roles)
+{
+    if (!await roleManager.RoleExistsAsync(role))
+    {
+        await roleManager.CreateAsync(new IdentityRole(role));
+    }
+}</code></pre>
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>C#</strong> — Primary language</li>
+        <li><strong>ASP.NET Core</strong> — Web framework with Razor Pages</li>
+        <li><strong>ASP.NET Identity</strong> — Authentication and role management</li>
+        <li><strong>Entity Framework Core</strong> — ORM with SQL Server</li>
+        <li><strong>Azure Blob Storage</strong> — Cloud file storage</li>
+        <li><strong>Azure SQL</strong> — Cloud-hosted relational database</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
