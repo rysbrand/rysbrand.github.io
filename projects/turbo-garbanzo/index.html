@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turbo-Garbanzo | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>Turbo-Garbanzo</h2>
+        <a href="https://turbo-garbanzo-six.vercel.app/" target="_blank" class="github-link">View Live Site →</a>
+      </div>
+      <div class="card-badge">Next.js · Supabase · PostgreSQL · Vercel</div>
+      <p class="project-intro">
+        A full-stack employee scheduling and time-tracking application built as the capstone project
+        for CIS-248 Advanced Application Development. The app supports role-based dashboards for
+        employees, managers, and admins, with real-time data powered by Supabase and deployed on Vercel.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>Role-Based Access</strong> — Separate dashboards and permissions for employees, managers, and admins.</li>
+        <li><strong>Employee Scheduling</strong> — Managers can create and manage shift schedules for their teams.</li>
+        <li><strong>Time Tracking</strong> — Employees can clock in and out with time records stored in the database.</li>
+        <li><strong>Supabase Backend</strong> — PostgreSQL database with row-level security policies controlling data access per role.</li>
+        <li><strong>Real-Time Data</strong> — Supabase provides live data updates without requiring manual refreshes.</li>
+        <li><strong>Vercel Deployment</strong> — Continuously deployed via Vercel with GitHub integration.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>My Role</h2>
+      <p>I served as an unofficial Scrum Master on a team of three, coordinating the team, driving project decisions, and handling a large portion of the backend work. My responsibilities included writing and managing Supabase row-level security policies, backend logic for multiple pages, and debugging across the full stack. Frontend design was primarily handled by my teammate Kay.</p>
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>Next.js</strong> — React framework with App Router for full-stack development</li>
+        <li><strong>Supabase</strong> — Backend-as-a-service providing PostgreSQL, auth, and real-time data</li>
+        <li><strong>PostgreSQL</strong> — Relational database with row-level security</li>
+        <li><strong>JavaScript</strong> — Typed throughout for reliability</li>
+        <li><strong>Vercel</strong> — Deployment and hosting</li>
+        <li><strong>GitHub</strong> — Version control and team collaboration</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Live Demo</h2>
+      <p>The application is live at <a href="https://turbo-garbanzo-six.vercel.app/" target="_blank">turbo-garbanzo-six.vercel.app</a>.</p>
+    </section>
+
+    <section class="reveal">
+      <h2>Repository</h2>
+      <p>View the source code on GitHub: <a href="https://github.com/rysbrand/turbo-garbanzo" target="_blank">github.com/rysbrand/turbo-garbanzo →</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
