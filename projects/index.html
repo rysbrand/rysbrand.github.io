@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <h2>Projects</h2>
+      <p>A selection of projects completed during my time at Southeast Technical Institute, spanning secure programming, full-stack web development, database-driven applications, and web services.</p>
+    </section>
+
+    <section class="reveal">
+      <h2>Advanced Projects</h2>
+      <div class="card-grid">
+
+        <div class="card reveal">
+          <div class="card-badge">Node.js · TypeScript</div>
+          <h3>SP_adminentry</h3>
+          <p>A secure admin portal with role-based access control, Argon2 password hashing, HTTPS/TLS, and a PostgreSQL backend. Built for CIS-225 Secure Programming.</p>
+          <a href="sp-adminentry/index.html">View Project →</a>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-badge">Next.js · Supabase</div>
+          <h3>Turbo-Garbanzo</h3>
+          <p>A full-stack employee scheduling and time-tracking app with role-based dashboards for employees, managers, and admins.</p>
+          <a href="turbo-garbanzo/index.html">View Project →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2>CIS-296 — Advanced MS Web Development</h2>
+      <div class="card-grid">
+
+        <div class="card reveal">
+          <div class="card-badge">C# · ASP.NET</div>
+          <h3>CIS296 Projects</h3>
+          <p>eCommerce web applications built with C# and ASP.NET, covering user authentication, SQL data access, stored procedures, and application deployment.</p>
+          <a href="cis296/index.html">View Project →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2>CIS-241 — Dynamic Website Development</h2>
+      <div class="card-grid">
+
+        <div class="card reveal">
+          <div class="card-badge">PHP · MySQL</div>
+          <h3>CIS241 Dynamic Projects</h3>
+          <p>Database-driven web applications built with PHP and MySQL using the MVC pattern, PDO objects, CRUD operations, sessions, and secure login systems.</p>
+          <a href="cis241/index.html">View Project →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2>CIS-266 — Web Services</h2>
+      <div class="card-grid">
+
+        <div class="card reveal">
+          <div class="card-badge">RESTful · AJAX · JSON · PHP</div>
+          <h3>Unit 2 — RESTful Web Service</h3>
+          <p>A dynamic RESTful AJAX/JSON/PHP/MySQL web service built and tested as part of CIS-266 Unit 2.</p>
+          <a href="cis266/unit2/index.html">View Project →</a>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-badge">CRUD · JSON · PHP · MySQL</div>
+          <h3>Scrum 3 — Team RESTful Service</h3>
+          <p>A team-built CRUD RESTful web service using JSON, PHP, and MySQL, developed using Scrum methodology.</p>
+          <a href="cis266/scrum3/index.html">View Project →</a>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-badge">WCF · SOAP</div>
+          <h3>Unit 3 — WCF Web Service</h3>
+          <p>A static WCF SOAP web service project demonstrating XML-based service communication.</p>
+          <a href="cis266/unit3/index.html">View Project →</a>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-badge">Team Project · Slides · Demo</div>
+          <h3>Scrum 4 — Team Project</h3>
+          <p>Final team project presentation including slides and demo video for our CIS-266 Scrum 4 capstone.</p>
+          <a href="cis266/scrum4/index.html">View Project →</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
