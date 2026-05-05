@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrum 3 — Study Service | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>Scrum 3 — Study Service</h2>
+        <a href="https://scrum3.infinityfreeapp.com/?i=1" target="_blank" class="github-link">View Live Site →</a>
+      </div>
+      <div class="card-badge">PHP · MySQL · RESTful · CRUD · JSON</div>
+      <p class="project-intro">
+        A team-built RESTful web service for managing study groups, projects, and tasks.
+        Built for CIS-266 using PHP and MySQL, the app provides full CRUD functionality
+        across three related database entities — users, projects, and tasks — via a
+        JSON-based REST API and a linked HTML client.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>User Management</strong> — Create, view, update, and delete users with roles such as Student, Tutor, Mentor, and Coordinator.</li>
+        <li><strong>Project Tracking</strong> — Manage study projects with categories, statuses, due dates, and ownership tied to users.</li>
+        <li><strong>Task Management</strong> — Assign tasks to users within projects, with priority levels, statuses, and due dates.</li>
+        <li><strong>RESTful API</strong> — PHP-based provider handles all CRUD operations, returning data for consumption by the HTML client.</li>
+        <li><strong>Relational Database</strong> — MySQL schema with foreign key constraints linking tasks to projects and users, with cascading deletes.</li>
+        <li><strong>HTML Client</strong> — A simple front-end client links to all provider endpoints for viewing and managing records.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>My Role</h2>
+      <p>I worked as a software developer on a team of three alongside Rylee Smith and Kaleb. My primary contributions were the database routing and the create and delete functions across all three entities — users, projects, and tasks.</p>
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>PHP</strong> — Server-side REST API provider</li>
+        <li><strong>MySQL</strong> — Relational database with three linked tables</li>
+        <li><strong>HTML/CSS</strong> — Front-end client interface</li>
+        <li><strong>mysqli</strong> — Database access layer</li>
+        <li><strong>InfinityFree</strong> — Live PHP/MySQL hosting</li>
+        <li><strong>GitHub</strong> — Version control and team collaboration</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Live Demo</h2>
+      <p>The application is hosted live at <a href="https://scrum3.infinityfreeapp.com/?i=1" target="_blank">scrum3.infinityfreeapp.com</a>. From the home page you can navigate to Users, Tasks, and Projects to view, create, update, and delete records.</p>
+    </section>
+
+    <section class="reveal">
+      <h2>Repository</h2>
+      <p>View the full source code on GitHub: <a href="https://github.com/rysbrand/Scrum3_Team_3" target="_blank">github.com/rysbrand/Scrum3_Team_3 →</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

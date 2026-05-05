@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIS241 Project | Rebecca Ysbrand</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1>Rebecca<br/>Ysbrand</h1>
+      <p class="tagline">Developer · Army Veteran · STI Class of 2026</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../../index.html">Home</a></li>
+      <li><a href="../../CIS_Syllabi.html">Syllabi</a></li>
+      <li><a href="../../resume/RYsbrand202604Resume.pdf" target="_blank">Resume</a></li>
+      <li><a href="../index.html" class="active">Projects</a></li>
+      <li><a href="https://catalog.southeasttech.edu/preview_program.php?catoid=35&poid=4367&hl=%22software%22&returnto=search" target="_blank">STI Curriculum</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="reveal">
+      <div class="project-header">
+        <h2>CIS-241 Dynamic Website Development</h2>
+        <a href="https://dwdunit3.infinityfreeapp.com" target="_blank" class="github-link">View Live Site →</a>
+      </div>
+      <div class="card-badge">PHP · MySQL · MVC · PDO</div>
+      <p class="project-intro">
+        A dynamic, database-driven web application built solo for CIS-241. The app implements
+        user registration and authenticated login using PHP sessions, PDO database access,
+        and the MVC pattern.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li><strong>User Registration</strong> — New users can register with email, password, and name. Passwords are hashed using PHP's built-in <code>password_hash()</code> before being stored.</li>
+        <li><strong>Authenticated Login</strong> — Users log in with their email and password. Credentials are verified against the database using <code>password_verify()</code>.</li>
+        <li><strong>Session Management</strong> — PHP sessions maintain login state across pages, protecting dashboard and account routes from unauthenticated access.</li>
+        <li><strong>Account Management</strong> — Logged-in users can view and update their account information.</li>
+        <li><strong>PDO Database Access</strong> — All database queries use PHP Data Objects (PDO) with prepared statements to prevent SQL injection.</li>
+        <li><strong>MVC Structure</strong> — Code is organized into models, views, and a controller (index.php) for clean separation of concerns.</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Tech Stack</h2>
+      <ul class="feature-list">
+        <li><strong>PHP</strong> — Server-side logic and routing</li>
+        <li><strong>MySQL</strong> — Relational database for user accounts</li>
+        <li><strong>PDO</strong> — Secure database access with prepared statements</li>
+        <li><strong>HTML/CSS</strong> — Front-end structure and styling</li>
+        <li><strong>InfinityFree</strong> — Live PHP/MySQL hosting</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2>Live Demo</h2>
+      <p>The application is hosted live at <a href="https://dwdunit3.infinityfreeapp.com" target="_blank">dwdunit3.infinityfreeapp.com</a>. You can register a new account or log in to explore the dashboard and account management features.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Rebecca Ysbrand · Southeast Technical Institute</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
